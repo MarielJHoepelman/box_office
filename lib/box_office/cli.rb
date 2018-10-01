@@ -15,11 +15,22 @@ module BoxOffice
         input = gets.strip.to_i
         case input
         when 1
-          puts "Listing Box Office..."
+          movie_list
         when 2
           puts "show help intructions"
-        end 
+        end
       end
+    end
+
+    def movie_list
+      list = BoxOffice::MovieList.list
+      list.each_with_index do | movie, key |
+        puts "#{key + 1}. #{movie[:title]}"
+      end
+
+      puts "Enter the movie number to see movie details or enter 0 to go back to the Main Menu"
+      input = gets.strip.to_i
+      puts list[input.to_i - 1]
     end
   end
 end
