@@ -31,7 +31,7 @@ module BoxOffice
       puts "Enter the movie number to see movie details or enter 0 to go back to the Main Menu"
       input = gets.strip.to_i
       m = Movies.find_or_create(list[input.to_i - 1])
-      binding.pry
+      puts m
     end
   end
 end

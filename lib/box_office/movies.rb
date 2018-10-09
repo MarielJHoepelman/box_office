@@ -2,7 +2,6 @@ module BoxOffice
   class Movies
     attr_accessor :title, :description, :cast, :metascore, :url
     @@all = []
-    IMDB_BASE_URL = "https://www.imdb.com"
 
     def initialize(item)
       @url = item[:url]
@@ -12,7 +11,7 @@ module BoxOffice
     end
 
     def scrape_movie
-      doc = Nokogiri::HTML(open("#{IMDB_BASE_URL}/#{@url}"))
+      doc = BoxOffice::Scrapper.scrape(url)
       @description = doc.css(".summary_text").text
       @metascore = doc.css(".metacriticScore").text
       @cast = doc.css(".cast_list tr td").text
@@ -34,6 +33,5 @@ module BoxOffice
     def self.find_or_create(item)
       find_by_title(item) || create_by_url(item)
     end
-
   end
 end
