@@ -1,6 +1,6 @@
 module BoxOffice
   class Movies
-    attr_accessor :title, :description, :cast, :metascore, :url
+    attr_accessor :title, :description, :cast, :credits, :metascore, :url
     @@all = []
 
     def initialize(item)
@@ -12,9 +12,10 @@ module BoxOffice
 
     def scrape_movie
       doc = BoxOffice::Scrapper.scrape(url)
-      @description = doc.css(".summary_text").text
-      @metascore = doc.css(".metacriticScore").text
-      @cast = doc.css(".cast_list tr td").text
+      @description = doc.css(".summary_text").text.strip
+      @metascore = doc.css(".metacriticScore").text.strip
+      @cast = doc.css(".cast_list tr td a").text.strip
+      @credits = doc.css(".credit_summary_item")
       self
     end
 

@@ -1,11 +1,16 @@
 module BoxOffice
   class MovieList
+    attr_accessor :list
 
-    def self.list
-      self.scrape_imdb
+    def initialize
+      @list = scrape_imdb
     end
 
-    def self.scrape_imdb
+    def self.list
+      @list
+    end
+
+    def scrape_imdb
       doc = BoxOffice::Scrapper.scrape("/chart/boxoffice")
 
       movies_array = doc.css(".chart .titleColumn")
