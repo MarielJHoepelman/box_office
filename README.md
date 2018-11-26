@@ -1,6 +1,7 @@
 # BoxOffice
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/box_office`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to BoxOffice! In this directory, you'll find the files you need to be able to run the Ruby BoxOffice gem.
+BoxOffice scrapes [IMDB.com](https://www.imdb.com/chart/boxoffice) for the latest movie releases ordered by box office revenue. for each selection, the user will be able to see a short description of the plot and it's metascore.
 
 ## Installation
 
