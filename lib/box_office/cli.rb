@@ -3,15 +3,20 @@ module BoxOffice
     attr_accessor :list
 
     def call
+      show_welcome
       menu_options
+    end
+
+    def show_welcome
+      puts ""
+      puts "Welcome to the Box Office!"
+      puts "=========================="
     end
 
     def menu_options
       input = nil
       while input != 0
         puts ""
-        puts "Welcome to the Box Office!"
-        puts "=========================="
         puts "Enter the number of your option:"
         puts "1. List Box Office"
         puts "2. Help"
@@ -42,14 +47,18 @@ module BoxOffice
       input = gets.strip.to_i
 
       if input != 0
-        movie = Movies.find_or_create(@list[input.to_i - 1])
+        movie = BoxOffice::Movie.find_or_create(@list[input.to_i - 1])
         puts ""
-        puts "Title: #{movie.title}"
+        puts "Title: #{movie.title} #{movie.year}"
         puts "=========================="
         puts "Description: #{movie.description}"
-        puts "Metascore: #{movie.metascore}"
-        # puts "Cast: #{movie.cast.strip}"
-        # binding.pry
+        puts ""
+        puts "Rate: #{movie.rate}"
+        puts ""
+        puts "Cast:"
+        movie.cast.each do |c|
+          puts "#{c.css('td')[1].text.strip} as#{c.css('td')[3].text.gsub("\n"," ").squeeze(" ")}"
+        end
       end
     end
 
@@ -57,7 +66,7 @@ module BoxOffice
       puts ""
       puts "Help"
       puts "===="
-      puts "It's easy, just enter numbers"
+      puts "It's easy, just enter your selection from the menu. 1 to see movie list, 2 for help and 0 for exit."
     end
   end
 end

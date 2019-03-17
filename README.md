@@ -1,7 +1,7 @@
 # BoxOffice
 
 Welcome to BoxOffice! In this directory, you'll find the files you need to be able to run the Ruby BoxOffice gem.
-BoxOffice scrapes [IMDB.com](https://www.imdb.com/chart/boxoffice) for the latest movie releases ordered by box office revenue. for each selection, the user will be able to see a short description of the plot and it's metascore.
+BoxOffice scrapes [IMDB.com](https://www.imdb.com/chart/boxoffice) for the latest movie releases ordered by box office revenue. for each selection, the user will be able to see a short description of the plot, cast and it's rate.
 
 ## Installation
 

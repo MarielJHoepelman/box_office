@@ -5,6 +5,5 @@ module BoxOffice
     def self.scrape(url)
       Nokogiri::HTML(open("#{IMDB_BASE_URL}/#{url}"))
     end
-
   end
 end
